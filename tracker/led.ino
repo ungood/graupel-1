@@ -2,6 +2,12 @@ unsigned long NextLEDs=0;
 uint8_t last_status = 0;
 uint8_t last_light = 0;
 
+class BlinkyLight: public Module {
+  public:
+    void setup() {}
+    void loop(unsigned long millis) {}
+};
+
 void SetupLEDs(void)
 {
 #ifdef LED_WARN
@@ -130,4 +136,3 @@ void CheckLEDs(void){
     Flash = 1-Flash;
   }
 }
-

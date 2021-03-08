@@ -1,6 +1,6 @@
 # Graupel-1 HAB
 
-Graupel-1 is a high altitude balloon (HAB), launched with the goal of reaching 100,000' altitude and capturing the entire flight on video.  The project draws much of its inspiration from the [Edge Pro Weather Balloon Kit](https://www.highaltitudescience.com/products/eagle-pro-near-space-kit) by High Altitude Science, but with a more DIY approach. We are following the excellent tutorial on HABs by [Overlook Horizon](https://www.overlookhorizon.com/how-to-launch-weather-balloons/), and plan on flying the OLHZN flight computer for GPS, telemetry, and APRS tracking.
+Graupel-1 is a high altitude balloon (HAB) mission, launched with the goal of reaching 100,000' altitude and capturing the entire flight on video.  The project draws much of its inspiration from the [Edge Pro Weather Balloon Kit](https://www.highaltitudescience.com/products/eagle-pro-near-space-kit) by High Altitude Science, but with a more DIY approach. We are following the excellent tutorial on HABs by [Overlook Horizon](https://www.overlookhorizon.com/how-to-launch-weather-balloons/), and plan on flying the OLHZN flight computer for GPS, telemetry, and APRS tracking.
 
 This repository contains documentation and software supporting the launch.
 
@@ -12,7 +12,7 @@ This repository contains documentation and software supporting the launch.
 
 ## Construction
 
-### Balloon and Lift Gas
+### Balloon and Lifting Gas
 
 ### Payloads
 
@@ -24,6 +24,8 @@ This repository contains documentation and software supporting the launch.
 
 ## Launch
 
+TBD: Details on launch location, flight predictions, and launch checklist.
+
 ## Tracking
 
 As we plan on flying a rather high end camera on-board this flight, a primary goal is to be able to recover it.  In order to facilitate this, several redundant tracking systems will be employed:
@@ -34,8 +36,6 @@ As we plan on flying a rather high end camera on-board this flight, a primary go
 1. And if all else fails: a message asking someone to call us.
 
 Because communication with the digipeaters cannot be assured, we will run a mobile ground station with the ability to receive signals from the APRS tracker.  Because an internet connection cannot be assured, we will have software available on the ground station for being able to map, find directions to, and display a bearing to the landing site.
-
-### Hardware
 
 ### Software
 
@@ -61,4 +61,4 @@ There are two principle software systems in this repository:
 
 ## FAQ
 1. What does the name **Graupel** mean?
-	* [Graupel](https://en.wikipedia.org/wiki/Graupel)
+	* [Graupel](https://en.wikipedia.org/wiki/Graupel) also called soft hail, hominy snow, or snow pellets, is precipitation that forms when supercooled water droplets are collected and freeze on falling snowflakes, forming 2–5 mm (0.08–0.20 in) balls of rime.
