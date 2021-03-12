@@ -5,7 +5,7 @@
 
 #define SEA_LEVEL_PRESSURE_HPA 1013.25
 
-class BME280 {
+class Sensors {
     private:
         Adafruit_BME280 bme;
         Adafruit_Sensor *temperature = bme.getTemperatureSensor();
