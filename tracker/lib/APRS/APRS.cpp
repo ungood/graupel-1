@@ -49,11 +49,13 @@ volatile static byte *_txbuf = 0;
 volatile static size_t _txlen = 0;
 volatile static bool _is_transmitting = false;
 
-void CompressedPositionMessage::update_fix(float latitude, float longitude, float altitude_feet) {
+void CompressedPositionMessage::set_position(float latitude, float longitude, float altitude_feet) {
   ax25_encode_latitude(latitude, compressed_lat, 4);
   ax25_encode_longitude(longitude, compressed_lng, 4);
   ax25_encode_altitude(altitude_feet, compressed_alt, 2);
 }
+
+char compression_type = 0b0011000 + 33; // Adding 33 converts this to a 'base-91' ASCII character.
 
 bool APRS::begin() {
   Log.verbose("Initializing radio...\n");
@@ -86,7 +88,7 @@ bool APRS::loop(unsigned long currentMillis) {
 }
 
 void APRS::set_position(float latitude, float longitude, float altitude_feet) {
-  message_.update_fix(latitude, longitude, altitude_feet);
+  message_.set_position(latitude, longitude, altitude_feet);
 
   // Above 10,000 ft, reduce path (to 0) and transmit every 5 minutes.
   if(altitude_feet > 10000) {
@@ -178,7 +180,7 @@ ISR(TIMER2_OVF_vect) {
     {
       if(!--rest)
       {
-        // Disable radio, Tx LED off, disable interrupt
+        // Disable radio, disable interrupt
         if(_enable_pin) {
           digitalWrite(_enable_pin, 0);
           delay(25);

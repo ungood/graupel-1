@@ -51,7 +51,6 @@ struct AX25Message {
     ax25_encode_callsign("SEA7", 0, destination_address);
     ax25_encode_callsign(callsign, ssid, source_address);
     set_ttls(ttl1, ttl2);
-    
   }
 
   inline void set_ttls(short ttl1, short ttl2) {
@@ -83,7 +82,8 @@ struct CompressedPositionMessage : AX25Message {
   char compressed_lng[4];
   APRSSymbol symbol;
   char compressed_alt[2];
-  char compression_type = 0b0011000;
+  // Interpret the previous two bytes as altitude. Adding 33 converts this to a base-91 ASCII character.
+  char compression_type = 0b00110000 + 33;
   char comment[MAX_COMMENT_LEN] = "";
 
   CompressedPositionMessage(const char *callsign, short ssid, short ttl1, short ttl2, APRSSymbol symbol)
@@ -91,7 +91,7 @@ struct CompressedPositionMessage : AX25Message {
     this->symbol = symbol;
   }
 
-  void update_fix(float latitude, float longitude, float altitude_feet);
+  void set_position(float latitude, float longitude, float altitude_feet);
 } __attribute__((packed));
 
 struct APRSConfig {
@@ -112,7 +112,9 @@ private:
   unsigned long transmissionDelay_ = 60UL * 1000;
 
 public:
-  APRS(APRSConfig config) : message_{config.callsign, config.ssid, 0, 0, config.symbol} {
+  APRS(APRSConfig config)
+      : data_pin_{config.data_pin}, enable_pin_{config.enable_pin}, message_{config.callsign, config.ssid, 0, 0,
+                                                                           config.symbol} {
     set_position(0, 0, 0);
     set_comment(config.comment);
   }
