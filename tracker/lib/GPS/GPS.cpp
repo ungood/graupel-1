@@ -1,52 +1,96 @@
+#include "GPS.h"
+
 #include <Arduino.h>
+#include <ArduinoLog.h>
+#include <common/SysCall.h>
 
-// void setFlightMode(byte newMode){
-//   // Send navigation configuration command
-//   unsigned char setNav[] = {
-//     0xB5, 0x62, // Header
-//     0x06, 0x24, // Message ID
-//     0x24, 0x00,
-//     // dynModel, fixMode
-//     0xFF, 0xFF, // mask
-//     // fixedAlt
-//     0x06, 0x03, // fixedAltVar
-//     0x00,
-//     0x00,
-//     0x00, 0x00, 0x10, 0x27,
-//     0x00, 0x00, 0x05, 0x00, 0xFA, 0x00,
-//     0xFA, 0x00, 0x64, 0x00, 0x2C, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00,
-//     0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-//     0x00, 0x00,
-//     0x16, 0xDC
-//   };
+static const uint8_t ubloxHeader[] = {0xB5, 0x62};
 
-//   setNav[8] = newMode;
+bool GPS::begin() {
+  port_.begin(9600);
+  port_.setTimeout(3000);
+  while (!port_) {
+    SysCall::yield();
+  }
 
-//   FixUBXChecksum(setNav, sizeof(setNav));
+  // Sends the CFG-NAV5 command, setting the dynamic platform model to "Airborne
+  // <2g", setting max altitude to 50,000m and which is "recommended for typical
+  // airborne environment".
+  Log.trace(F("Configuring GPS for AIR 2G dynamic model.\n"));
+  ublox::cfg_nav5_t cfgNav5;
+  cfgNav5.apply.dyn_model = 1;
+  cfgNav5.dyn_model = ublox::dyn_model_t::UBX_DYN_MODEL_AIR_2G;
   
-//   SendUBX(setNav, sizeof(setNav));
-// }
+  return send(cfgNav5);
+}
 
-// void FixUBXChecksum(unsigned char *Message, int Length){ 
-//   unsigned char CK_A, CK_B;
- 
-//   CK_A = 0;
-//   CK_B = 0;
+bool GPS::send(const ublox::msg_t &message, const unsigned int timeout) {
+  while(port_.available()) {
+    port_.read();
+  }
+  write(message);
+  return waitForAcknowledge(message.msg_class, message.msg_id, timeout);
+}
 
-//   for (int i=2; i<(Length-2); i++){
-//     CK_A = CK_A + Message[i];
-//     CK_B = CK_B + CK_A;
-//   }
+void GPS::write(const ublox::msg_t &message) {
+  Log.verbose(F("Writing message class: %x, id: %x.\n"), message.msg_class, message.msg_id);
+  port_.write(ubloxHeader, 2);
+
+  byte ck_a = 0;
+  byte ck_b = 0;
+  byte *buffer = (byte *)&message;
+  size_t length = message.length + sizeof(ublox::msg_t);
+
+  for (size_t i = 0; i < length; i++) {
+    ck_a = ck_a + buffer[i];
+    ck_b = ck_b + ck_a;
+    port_.write(buffer[i]);
+  }
+
+  port_.write(ck_a);
+  port_.write(ck_b);
+  port_.flush();
+}
+
+bool GPS::waitForAcknowledge(ublox::msg_class_t msgClass, ublox::msg_id_t msgId, const unsigned int timeout) {
+  Log.verbose(F("Waiting for acknowledgement for message class: %x, id: %x.\n"), msgClass, msgId);
+
+  byte ack[] = {
+      ubloxHeader[0], ubloxHeader[1],     //
+      ublox::UBX_ACK, ublox::UBX_ACK_ACK, //
+      0x02,           0x00,               //
+      msgClass,       msgId               //
+  };
+
+  int matched = 0;
+  const auto timeoutExpires = millis() + timeout;
   
-//   Message[Length-2] = CK_A;
-//   Message[Length-1] = CK_B;
-// }
+  while(millis() < timeoutExpires) {
+    while (port_.available()) {
+      auto read = port_.read();
+      Log.verbose(F("    Looking for ack[%d] == %X. Found %X\n"), matched, ack[matched], read);
 
-// void SendUBX(unsigned char *Message, int Length){
-//   LastCommand1 = Message[2];
-//   LastCommand2 = Message[3];
-  
-//   for (int i=0; i<Length; i++){
-//     GPS_SERIAL.write(Message[i]);
-//   }
-// }
+      if (read == ack[matched]) {
+        matched++;
+      } else {
+        matched = 0;
+      }
+
+      if (matched >= 8) {
+        Log.verbose(F("Ack received for message for message class: %x, id: %x.\n"), msgClass, msgId);
+        return true;
+      }
+    }
+    yield();
+  }
+
+  Log.error(F("Timed out while waiting for acknolegement for message class: %x, id: %x.\n"), msgClass, msgId);
+  return false;
+}
+
+void GPS::loop(unsigned long currentMillis) {
+  while(port_.available()) {
+    char c = port_.read();
+    gps_.encode(c);
+  }
+}

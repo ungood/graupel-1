@@ -4,9 +4,9 @@
 #include <Arduino.h>
 
 class LED {
- private:
+private:
   byte pin_;
-  
+
   // Number of milliseconds that the blink pattern should last.
   unsigned int period_ = 960;
 
@@ -21,30 +21,40 @@ class LED {
   // 0xFFFF = 1111 1111 = On
   unsigned int pattern_ = 0x0000;
 
- public:
+public:
   LED(byte pin) : pin_{pin} {}
-  void setup();
+  void begin(bool initialValue = false);
   void loop(long currentMillis);
 
-  inline void on() { pattern_ = 0xFFFF; }
-  inline void off() { pattern_ = 0x0000; }
-  
-  void blink(unsigned int period, unsigned int pattern=0x00FF);
+  void on();
+  void off();
+  void blink(unsigned int period, unsigned int pattern = 0x00FF);
 };
 
 class Indicators {
- public:
+public:
   LED ok;    // Flashes when initalizng, solid when all systems initialized.
   LED tx;    // Flashes while acquiring GPS signal, solid while transmitting.
-  LED error;  // Off when all systems good. Flashing when major error.
+  LED error; // Off when all systems good. Flashing when major error.
 
-  Indicators(byte ok_pin, byte tx_pin, byte error_pin)
-      : ok{ok_pin}, tx{tx_pin}, error{error_pin} {}
+  Indicators(byte ok_pin, byte tx_pin, byte error_pin) : ok{ok_pin}, tx{tx_pin}, error{error_pin} {}
 
-  inline void setup() {
-    ok.setup();
-    tx.setup();
-    error.setup();
+  inline void begin() {
+    ok.begin();
+    tx.begin();
+    error.begin();
+  }
+
+  inline void on() {
+    ok.on();
+    tx.on();
+    error.on();
+  }
+
+  inline void off() {
+    ok.off();
+    tx.off();
+    error.off();
   }
 
   inline void loop(long currentMillis) {

@@ -1,39 +1,59 @@
 #include "tracker.h"
 
 #include <Arduino.h>
+#include <ArduinoLog.h>
+#include <avr/wdt.h>
+
 #include <FileSystem.h>
 #include <GPS.h>
 #include <Indicators.h>
 #include <Sensors.h>
-#include <avr/wdt.h>
 
-//#include <Logging.h>
+#include <config.h>
 #include <errors.h>
 
-// Initialize all the globals that represent the state of the tracker.
-Indicators indicators(PIN_OK, PIN_TX, PIN_ERROR);
-Sensors sensors;
-FileSystem fs;
-GPS gps{Serial3};
+#include "tracker.h"
+
+void setupIndicators() {
+  indicators.begin();
+  indicators.on();
+
+  delay(500);
+
+  indicators.off();
+  wdt_reset();
+}
+
+void setupLogging() {
+  Serial.begin(9600);
+  while (!Serial) {
+    yield();
+  }
+
+  Log.begin(LOG_LEVEL, &DEBUG_STREAM, true);
+  Log.verbose(F("Logging initialized.\n"));
+  wdt_reset();
+}
+
+void setupFilesystem() {
+  if (!fs.begin()) {
+    abort(ERROR_FILESYSTEM_INIT_FAILED, F("Failed to initialize SD cards."));
+  }
+  wdt_reset();
+}
 
 void setup() {
   // Enable watchdog timer for 4 seconds.
   wdt_enable(WDTO_4S);
 
-  // Test indicator LEDs
-  indicators.setup();
-  wdt_reset();
+  setupIndicators();
 
-  // Initialize serial port
-  Serial.begin(9600);
-  while (!Serial) {
-  }
-  wdt_reset();
+  // Initializing, Green light blinking!
+  indicators.ok.blink(1000, 0xFF00);
+  setupLogging();
+  //abort(5, F("TESTING ABORT"));
 
-  if (!fs.begin()) {
-    abort(ERROR_FILESYSTEM_INIT_FAILED, F("Failed to initialize SD cards."));
-  }
-  wdt_reset();
+  //setupFilesystem();
 
   // 2. Initialize log file and logging
 
@@ -43,14 +63,38 @@ void setup() {
 
   // 5. Initialize RTC
 
-  if (!sensors.begin()) {
-    abort(ERROR_SENSOR_INIT_FAILED, F("BME280 sensor failed to initialize."));
-  }
+  // if (!sensors.begin()) {
+  //   abort(ERROR_SENSOR_INIT_FAILED, F("BME280 sensor failed to initialize."));
+  // }
+
+  // Initialized, green light on
+  indicators.ok.on();
+
+  indicators.tx.blink(2000, 0xAAAA);
+  indicators.error.on();
 }
 
-void loop() { delay(1000); }
+unsigned long currentMillis = 0;
 
-void abort(const int errorCode, const __FlashStringHelper* errorMessage) {
-  // TODO
+void loop() {
+  currentMillis = millis();
+
+  indicators.loop(currentMillis);
+  wdt_reset();
+}
+
+void abort(unsigned int errorCode, const __FlashStringHelper *errorMessage) {
+  Log.fatal(errorMessage);
+  indicators.off();
+  indicators.error.blink(5000, errorCode);
+
+  unsigned long currentMillis = millis();
+  unsigned long resetAt = currentMillis + (10 * 1000);
+
+  while (currentMillis < resetAt) {
+    indicators.loop(currentMillis);
+    currentMillis = millis();
+  }
+
   reset();
 }

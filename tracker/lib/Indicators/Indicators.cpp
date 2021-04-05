@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include <ArduinoLog.h>
 
 #include "Indicators.h"
 
@@ -8,9 +9,18 @@ int ceil_div(int x, int y) {
     return x / y + (x % y > 0);
 }
 
-// Simply blinks the LED quickly so that we know its wired correctly.
-void LED::setup() {
+void LED::begin(bool initialValue) {
   pinMode(pin_, OUTPUT);
+  digitalWrite(pin_, initialValue);
+}
+
+void LED::on() {
+  pattern_ = 0xFFFF;
+  digitalWrite(pin_, HIGH);
+}
+
+void LED::off() {
+  pattern_ = 0x0000;
   digitalWrite(pin_, LOW);
 }
 

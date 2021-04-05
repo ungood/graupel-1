@@ -2,7 +2,13 @@
 #include <Indicators.h>
 #include <unity.h>
 
-Indicators indicators(PIN_OK, PIN_TX, PIN_ERROR);
+#include "config.h"
+
+void test_all_lights_on() {
+  TEST_ASSERT_EQUAL(HIGH, digitalRead(PIN_OK));
+  TEST_ASSERT_EQUAL(HIGH, digitalRead(PIN_TX));
+  TEST_ASSERT_EQUAL(HIGH, digitalRead(PIN_ERROR));
+}
 
 void test_all_lights_off() {
   TEST_ASSERT_EQUAL(LOW, digitalRead(PIN_OK));
@@ -35,9 +41,12 @@ void test_blink_works() {
 
 void setup() {
   UNITY_BEGIN();
-  indicators.setup();
-
+  indicators.begin();
   RUN_TEST(test_all_lights_off);
+
+  indicators.on();
+  RUN_TEST(test_all_lights_on);
+
   RUN_TEST(test_on_is_always_on);
   RUN_TEST(test_blink_works);
 
