@@ -37,6 +37,20 @@ void setup() {
   Log.notice(F("Initialization successful!.\n"));
   indicators.ok.on();
   indicators.error.on();
+
+  if(!sensors.begin()) {
+    Log.warning(F("Failed to initialize sensors!"));
+  }
+
+  if(!filesystem.begin()) {
+    Log.warning(F("failed to initialize filesystem!"));
+  }
+
+  pinMode(PIN2, INPUT_PULLUP);
+  pinMode(PIN3, OUTPUT);
+  pinMode(PIN4, OUTPUT);
+  digitalWrite(PIN3, LOW);
+  digitalWrite(PIN4, HIGH);
 }
 
 unsigned long currentMillis = millis();
@@ -46,6 +60,8 @@ unsigned int satellites = 0;
 void loop() {
   currentMillis = millis();
   indicators.loop(currentMillis);
+
+  digitalWrite(PIN3, digitalRead(PIN2));
 
   gps.loop(currentMillis);
 
@@ -63,7 +79,12 @@ void loop() {
     aprs.set_position(gps.gps_.location.lat(), gps.gps_.location.lng(), gps.gps_.altitude.feet());
   }
 
+  static SensorReading reading;
+  sensors.read(reading);
+  //Serial.println(reading.altitude_m);
+
   if(aprs.loop(currentMillis)) {
     Log.verbose(F("Transmitted! Satellites found: %d\n"), satellites);
+    Log.verbose(F("Altitude - GPS: %d, Pressure: %d\n"), (int)gps.gps_.altitude.feet(), (int)reading.altitude_m);
   }
 }

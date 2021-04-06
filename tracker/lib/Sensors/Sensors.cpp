@@ -16,9 +16,9 @@ bool Sensors::read(SensorReading& reading) {
     return false;
   }
 
-  reading.temperature = bme_.getTemperature_C();
-  reading.humidity = bme_.getHumidity_RH();
-  reading.pressure = bme_.getPressure_Pa();
-  reading.altitude = computeAltitude(reading.pressure, SEA_LEVEL_PRESSURE_PA);  
+  reading.temperature_C = bme_.getTemperature_C();
+  reading.humidity_RH = bme_.getHumidity_RH();
+  reading.pressure_Pa = bme_.getPressure_Pa();
+  reading.altitude_m = computeAltitude(reading.pressure_Pa, SEA_LEVEL_PRESSURE_PA);  
   return true;
 }

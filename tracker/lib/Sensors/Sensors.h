@@ -7,10 +7,10 @@
 const float SEA_LEVEL_PRESSURE_PA = 101325.0;
 
 struct SensorReading {
-  float temperature;
-  float pressure;
-  float altitude;
-  float humidity;
+  float temperature_C;
+  float pressure_Pa;
+  float altitude_m;
+  float humidity_RH;
 };
 
 class Sensors {
