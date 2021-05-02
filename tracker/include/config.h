@@ -1,6 +1,12 @@
 #ifndef CONFIG_H
 #define CONFIG_H
 
+#if __has_include("private.h")
+#include "private.h"
+#else
+#error "Please create a header file named 'private.h' with PRIVATE_CALLSIGN defined!"
+#endif
+
 #include <Arduino.h>
 #include <APRS.h>
 #include <FileSystem.h>
@@ -43,7 +49,11 @@ const unsigned int PIN_MOSI = 11;
 const unsigned int PIN_MISO = 12;
 const unsigned int PIN_SCK = 13;
 
-SoftSpiDriver<PIN_MOSI, PIN_MOSI, PIN_SCK> softSpi;
+#if SPI_DRIVER_SELECT != 2
+#error To use software SPI with SdFat library, you must modify the SdFatConfig file _inside the library_ to set SPI_DRIVER_SELECT to 2.
+#endif
+
+SoftSpiDriver<PIN_MISO, PIN_MOSI, PIN_SCK> softSpi;
 // Speed argument is ignored for software SPI.
 SdSpiConfig sdConfig(PIN_CHIP_SELECT, DEDICATED_SPI, SD_SCK_MHZ(0), &softSpi);
 FileSystem filesystem{sdConfig};
@@ -59,7 +69,7 @@ GPS gps{Serial3};
 APRSConfig aprs_config{
   .data_pin = 9,
   .enable_pin = A3,
-  .callsign = "KJ7VPV", // Change this, do not use mine please!
+  .callsign = PRIVATE_CALLSIGN, // Create a file 'include/private.h' and #define PRIVATE_CALLSIGN "YOUR_CALLSIGN"
   .ssid = 9, // 9 is good for testing, 11 for balloons.
   .symbol = APRS_MAC,
   .comment = "Graupel-1 HAB: https://git.io/JYQqO", // 40 characters or less

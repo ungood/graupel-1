@@ -1,16 +1,13 @@
 #include <Arduino.h>
+#include <ArduinoLog.h>
 
 #include "FileSystem.h"
 
 bool FileSystem::begin() {
-  // keep the hardware SS pin (53 on Mega) set to output or the SD library won't work
-  pinMode(PIN_SPI_SS, OUTPUT);
-  if(sd_.begin(config_)) {
-
-    sd_.ls(LS_SIZE | LS_R | LS_DATE);
-    sd_.open("foo.txt", O_WRITE);
+  if(sd_.begin(config_)) {    
     return true;
   } else {
+    Log.error(F("Error initializing SD card! Code: %X, Data: %X\n"), sd_.sdErrorCode(), sd_.sdErrorData());
     return false;
   }
 }

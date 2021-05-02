@@ -1,7 +1,6 @@
 #ifndef FILESYSTEM_H
 #define FILESYSTEM_H
 
-#include "SdFatConfig.h"
 #include <SdFat.h>
 
 class FileSystem {

@@ -39,17 +39,17 @@ void setup() {
   indicators.error.on();
 
   if(!sensors.begin()) {
-    Log.warning(F("Failed to initialize sensors!"));
+    Log.warning(F("Failed to initialize sensors!\n"));
   }
 
   if(!filesystem.begin()) {
-    Log.warning(F("failed to initialize filesystem!"));
+    Log.warning(F("Failed to initialize filesystem!\n"));
   }
 
   pinMode(PIN2, INPUT_PULLUP);
   pinMode(PIN3, OUTPUT);
   pinMode(PIN4, OUTPUT);
-  digitalWrite(PIN3, LOW);
+  digitalWrite(PIN3, HIGH);
   digitalWrite(PIN4, HIGH);
 }
 
