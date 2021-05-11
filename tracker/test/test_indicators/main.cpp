@@ -50,6 +50,8 @@ void setup() {
   RUN_TEST(test_on_is_always_on);
   RUN_TEST(test_blink_works);
 
+  indicators.off();
+
   UNITY_END();
 }
 

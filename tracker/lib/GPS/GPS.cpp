@@ -84,13 +84,14 @@ bool GPS::waitForAcknowledge(ublox::msg_class_t msgClass, ublox::msg_id_t msgId,
     yield();
   }
 
-  Log.error(F("Timed out while waiting for acknolegement for message class: %x, id: %x.\n"), msgClass, msgId);
-  return false;
+  Log.error(F("Timed out while waiting for acknowledgment for message class: %x, id: %x.\n"), msgClass, msgId);
+  return true;
+  // TODO: return false; - once I figure out why this sometimes fails.
 }
 
 void GPS::loop(unsigned long currentMillis) {
   while(port_.available()) {
     char c = port_.read();
-    gps_.encode(c);
+    encode(c);
   }
 }

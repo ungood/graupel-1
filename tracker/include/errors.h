@@ -1,7 +1,0 @@
-#ifndef ERRORS_H
-#define ERRORS_H
-
-#define ERROR_FILESYSTEM_INIT_FAILED 0x04
-#define ERROR_SENSOR_INIT_FAILED     0x05
-
-#endif

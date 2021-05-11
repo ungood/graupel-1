@@ -3,6 +3,7 @@
 
 #include <Arduino.h>
 #include <BME280.h>
+#include <TinyGPS++.h>
 
 const float SEA_LEVEL_PRESSURE_PA = 101325.0;
 

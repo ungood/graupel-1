@@ -29,7 +29,7 @@
 
 #include "ubxmsg.h"
 
-class GPS {
+class GPS : public TinyGPSPlus {
 private:
   HardwareSerial &port_;
 
@@ -37,9 +37,6 @@ private:
   bool waitForAcknowledge(ublox::msg_class_t msgClass, ublox::msg_id_t msgId, const unsigned int timeout);
 
 public:
-  // TODO: Encapsulate
-  TinyGPSPlus gps_;
-
   GPS(HardwareSerial &port) : port_{port} {}
   bool begin();
   bool send(const ublox::msg_t &message, const unsigned int timeout = 2000);

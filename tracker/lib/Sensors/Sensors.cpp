@@ -12,6 +12,10 @@ float Sensors::computeAltitude(float atmosphericPressurePa, float seaLevelPressu
 
 bool Sensors::read(SensorReading& reading) {
   int status = bme_.readSensor();
+  // For reasons unknown to me, the entire Arduino will hang if I read from the sensor followed by the RTC twice in quick succession.'
+  // This is a cheesy hack which waits just long enough to prevent that from happening.
+  delay(2);
+  
   if(status < 0) {
     return false;
   }

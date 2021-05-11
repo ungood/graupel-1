@@ -9,6 +9,7 @@
 
 #include <Arduino.h>
 #include <APRS.h>
+#include <Clock.h>
 #include <FileSystem.h>
 #include <GPS.h>
 #include <Indicators.h>
@@ -59,6 +60,7 @@ SdSpiConfig sdConfig(PIN_CHIP_SELECT, DEDICATED_SPI, SD_SCK_MHZ(0), &softSpi);
 FileSystem filesystem{sdConfig};
 
 // Real Time Clock
+Clock clock;
 
 // Sensors
 Sensors sensors{Wire, 0x76};

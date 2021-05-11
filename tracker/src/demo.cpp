@@ -24,6 +24,8 @@ void setup() {
   Log.begin(LOG_LEVEL, &DEBUG_STREAM);
   Log.trace(F("Logging initialized.\n"));
 
+  clock.begin();
+
   indicators.begin();
   indicators.ok.blink(1000, 0x00FF);
   Log.trace(F("Indicators initialized.\n"));
@@ -55,13 +57,12 @@ void setup() {
 
 unsigned long currentMillis = millis();
 unsigned long nextTrans = 0;
+unsigned long nextTimestamp = 0;
 unsigned int satellites = 0;
 
 void loop() {
   currentMillis = millis();
   indicators.loop(currentMillis);
-
-  digitalWrite(PIN3, digitalRead(PIN2));
 
   gps.loop(currentMillis);
 
@@ -75,16 +76,22 @@ void loop() {
     }
   }
 
-  if(gps.gps_.location.isValid()) {
-    aprs.set_position(gps.gps_.location.lat(), gps.gps_.location.lng(), gps.gps_.altitude.feet());
-  }
+  // if(gps.gps_.location.isValid()) {
+  //   aprs.set_position(gps.gps_.location.lat(), gps.gps_.location.lng(), gps.gps_.altitude.feet());
+  // }
 
+// this appears to be a problem!
   static SensorReading reading;
   sensors.read(reading);
   //Serial.println(reading.altitude_m);
 
-  if(aprs.loop(currentMillis)) {
-    Log.verbose(F("Transmitted! Satellites found: %d\n"), satellites);
-    Log.verbose(F("Altitude - GPS: %d, Pressure: %d\n"), (int)gps.gps_.altitude.feet(), (int)reading.altitude_m);
+  // if(aprs.loop(currentMillis)) {
+  //   Log.verbose(F("Transmitted! Satellites found: %d\n"), satellites);
+  //   Log.verbose(F("Altitude - GPS: %d, Pressure: %d\n"), (int)gps.gps_.altitude.feet(), (int)reading.altitude_m);
+  // }
+
+  if(currentMillis > nextTimestamp) {
+    clock.logTime();
+    nextTimestamp = currentMillis + 500;
   }
 }
