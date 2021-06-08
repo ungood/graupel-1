@@ -13,15 +13,26 @@ bool GPS::begin() {
     SysCall::yield();
   }
 
+  // A better approach is to configure the GPS using the U-Center software.
+  // You can use the serial-proxy.cpp program to turn the Arduino into a pass through
+  // for Serial to do this.
+
   // Sends the CFG-NAV5 command, setting the dynamic platform model to "Airborne
   // <2g", setting max altitude to 50,000m and which is "recommended for typical
   // airborne environment".
-  Log.trace(F("Configuring GPS for AIR 2G dynamic model.\n"));
-  ublox::cfg_nav5_t cfgNav5;
-  cfgNav5.apply.dyn_model = 1;
-  cfgNav5.dyn_model = ublox::dyn_model_t::UBX_DYN_MODEL_AIR_2G;
+  // Log.trace(F("Configuring GPS for AIR 2G dynamic model.\n"));
+  // ublox::cfg_nav5_t cfgNav5;
+  // cfgNav5.apply.dyn_model = 1;
+  // cfgNav5.dyn_model = ublox::dyn_model_t::UBX_DYN_MODEL_AIR_2G;
+  // bool nav5Sent = send(cfgNav5);
   
-  return send(cfgNav5);
+  // Sends the CFG-SBAS command, so as to use satellite-based augmented systems to
+  // increase accuracy.
+  // Log.trace(F("Configuring GPS for SBAS.\n"));
+  // ublox::cfg_sbas_t cfgSbas;
+  // write(cfgSbas);
+
+  return true;
 }
 
 bool GPS::send(const ublox::msg_t &message, const unsigned int timeout) {

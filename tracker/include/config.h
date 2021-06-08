@@ -72,8 +72,8 @@ APRSConfig aprs_config{
   .data_pin = 9,
   .enable_pin = A3,
   .callsign = PRIVATE_CALLSIGN, // Create a file 'include/private.h' and #define PRIVATE_CALLSIGN "YOUR_CALLSIGN"
-  .ssid = 9, // 9 is good for testing, 11 for balloons.
-  .symbol = APRS_MAC,
+  .ssid = 11, // 0 = primary station, 9 = mobile station, 11 = balloons.
+  .symbol = APRS_BALLOON,
   .comment = "Graupel-1 HAB: https://git.io/JYQqO", // 40 characters or less
 };
 APRS aprs{aprs_config};

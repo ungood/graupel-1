@@ -201,6 +201,10 @@ void loop() {
     record.satellites.set(gps.satellites.value());
   }
 
+  if(gps.hdop.isValid()) {
+    record.hdop.set(gps.hdop.hdop());
+  }
+
   if(gps.altitude.isValid()) {
     record.gps_altitude_m.set(gps.altitude.meters());
   }

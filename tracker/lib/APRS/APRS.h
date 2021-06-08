@@ -63,7 +63,7 @@ struct AX25Message {
 
 } __attribute__((packed));
 
-enum APRSSymbol : char { APRS_CAR = '>', APRS_BALLOON = 'O', APRS_MAC = 'M' };
+enum APRSSymbol : char { APRS_CAR = '>', APRS_BALLOON = 'O', APRS_MAC = 'M', APRS_BIKE = 'b' };
 
 enum CompressionType : char {
   // Position comes from a current GPS fix.
@@ -108,15 +108,20 @@ private:
   byte data_pin_;
   byte enable_pin_;
   CompressedPositionMessage message_;
-  unsigned long nextTransmission_ = 0;
-  unsigned long transmissionDelay_ = 60UL * 1000;
+  unsigned long nextTransmission_;
+  unsigned long transmissionDelay_seconds_;
+  unsigned long trasnmissionDelay_jitter_;
 
 public:
   APRS(APRSConfig config)
       : data_pin_{config.data_pin}, enable_pin_{config.enable_pin}, message_{config.callsign, config.ssid, 0, 0,
-                                                                           config.symbol} {
+                                                                             config.symbol} {
     set_position(0, 0, 0);
     set_comment(config.comment);
+    // TODO: Set this back to 60s +- 10.
+    transmissionDelay_seconds_ = 30UL;
+    trasnmissionDelay_jitter_ = 5UL;
+    nextTransmission_ = transmissionDelay_seconds_ * 1000;
   }
 
   bool begin();
