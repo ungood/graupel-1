@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+opencv-python = "*"
+matplotlib = "*"
+pandas = "*"
+jupyter = "*"
+seaborn = "*"
+timebudget = "*"
+progressbar2 = "*"
+basemap = {file = "https://github.com/matplotlib/basemap/archive/master.zip"}
+
+[dev-packages]
+
+[requires]
+python_version = "3.7"
