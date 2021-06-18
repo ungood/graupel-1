@@ -28,11 +28,17 @@ Total payload weight is 1350 grams.
 
 We're using a 3' [Rocketman High Altitude Balloon parachute](https://the-rocketman.com/recovery-html/) which is designed with a loop at the top to attach the balloon too.  Recovery is simple: while the balloon ascends, the parachute is pulled upwards and shut, adding very little to the drag. When the balloon bursts, the payload will begin to fall and naturally open the chute.
 
-We tested the parachute by dropping it off the Fremont Bridge and measuring the time it took to fall with a simulated payload weighing 2.69 pounds.  After several timings, we measured a descent rate of between 18.1 and 20.9 feet per second which matches the expected descent rates on the Rocketman website.
+We tested the parachute by dropping it off the Fremont Bridge and measuring the time it took to fall with a simulated payload weighing 2.69 pounds.  After several timings, we measured a descent rate of between 18.1 and 20.9 feet per second (5.5-6.4 m/s) which matches the expected descent rates on the Rocketman website.
 
 ## Launch
 
 Using the information, we plugged everything into a [balloon flight predictor](https://predict.habhub.org/) starting 10 days prior to launch to find our predicted flight path. We repeated this daily to determine if the predictions started stabalizing as we got closer to our launch day.
+
+**:Flight Prediction Parameters:**
+
+* Ascent Rate: 4.34 m/s
+* Burst Altitude: 31726 m
+* Descent Rate: 6 m/s
 
 ## Tracking
 
