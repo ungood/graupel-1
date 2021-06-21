@@ -12,6 +12,8 @@ seaborn = "*"
 timebudget = "*"
 progressbar2 = "*"
 basemap = {file = "https://github.com/matplotlib/basemap/archive/master.zip"}
+scipy = "*"
+simplekml = "*"
 
 [dev-packages]
 

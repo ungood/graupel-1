@@ -1,0 +1,22 @@
+{
+  "name": "processing",
+  "version": "1.0.0",
+  "description": "Graupel-1 post-processing",
+  "main": "index.js",
+  "scripts": {
+    "extract-metadata": "ts-node extract-metadata"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "argparse": "^2.0.1",
+    "gopro-telemetry": "^1.1.36",
+    "gpmf-extract": "^0.1.24"
+  },
+  "devDependencies": {
+    "@types/argparse": "^2.0.8",
+    "@types/node": "^15.12.2",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
+  }
+}

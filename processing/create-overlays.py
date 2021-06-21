@@ -45,7 +45,7 @@ data = data.drop(datetime_cols, axis=1)
 
 # 496507,2021,5,30,16,34,49,7.21,11,0.8,82.1,308,0,47.68717575,-122.3899612,20.25,101214.11,9.24,46.61
 # TODO: Read these from command line
-offset_ms = 4283130 * 4 # offset from video time to get data time.
+offset_ms = 427309 # offset from video time to get data time.
 launch_time = data.index[130] #130 is the row representing launch time
 
 class AltitudeOverlay(PlotOverlay):
@@ -141,7 +141,7 @@ def main():
       break
 
     if frame.position_ms > next_update:
-      data_position_ms = frame.position_ms + offset_ms
+      data_position_ms = (frame.position_ms + offset_ms)*20
       update_overlays(data_position_ms)
       next_update = frame.position_ms + 1000
 
