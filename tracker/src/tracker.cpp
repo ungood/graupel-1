@@ -241,11 +241,13 @@ void loop() {
 
   if(currentMillis > nextTelemetry) {
     record.voltage.set(readVoltage(PIN_A0, 6.0));
-    nextTelemetry = currentMillis + 1000; // Log once a second.
+    nextTelemetry = currentMillis + 500;
     Log.verbose(F("Logging telemetry.\n"));
     filesystem.write(record);
 
+    #ifdef DEBUG
     record.write(Serial);
+    #endif
   }
 
   wdt_reset();

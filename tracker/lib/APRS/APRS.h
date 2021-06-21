@@ -118,9 +118,8 @@ public:
                                                                              config.symbol} {
     set_position(0, 0, 0);
     set_comment(config.comment);
-    // TODO: Set this back to 60s +- 10.
-    transmissionDelay_seconds_ = 30UL;
-    trasnmissionDelay_jitter_ = 5UL;
+    transmissionDelay_seconds_ = 60UL;
+    trasnmissionDelay_jitter_ = 10UL;
     nextTransmission_ = transmissionDelay_seconds_ * 1000;
   }
 

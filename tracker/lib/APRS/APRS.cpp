@@ -72,7 +72,8 @@ bool APRS::begin() {
   TCCR2B = _BV(CS20);
   pinMode(data_pin_, OUTPUT);
 
-  Log.verbose(F("Radio initialized with delay of %ls +/- %ls\n"), transmissionDelay_seconds_, trasnmissionDelay_jitter_);
+  Log.verbose(F("Radio initialized with delay of %ls +/- %ls\n"), transmissionDelay_seconds_,
+              trasnmissionDelay_jitter_);
   return true;
 }
 
@@ -82,7 +83,7 @@ bool APRS::loop(unsigned long currentMillis) {
     // Add some random jitter (+/- jitter seconds to the next transmission to avoid interference if someone is
     // transmitting at same interval).
     const unsigned long delayMillis = random((transmissionDelay_seconds_ - trasnmissionDelay_jitter_) * 1000,
-                                               (transmissionDelay_seconds_ + trasnmissionDelay_jitter_) * 1000);
+                                             (transmissionDelay_seconds_ + trasnmissionDelay_jitter_) * 1000);
     nextTransmission_ = currentMillis + delayMillis;
     Log.trace(F("Next tranmission in %lms at %l\n"), delayMillis, nextTransmission_);
     return true;
@@ -93,14 +94,12 @@ bool APRS::loop(unsigned long currentMillis) {
 void APRS::set_position(float latitude, float longitude, float altitude_feet) {
   message_.set_position(latitude, longitude, altitude_feet);
 
-  // Above 10,000 ft, reduce path (to 0) and transmit every 5 minutes.
+  // Above 10,000 ft, reduce path (to 0) and transmit every 2 minutes.
   if (altitude_feet > 10000) {
     message_.set_ttls(0, 0);
-    //transmissionDelay_seconds_ = 5 * 60;
-    // Below, increase path and transmit more frequently.
+    // Below, increase path
   } else {
     message_.set_ttls(1, 1);
-    //transmissionDelay_seconds_ = 1 * 60;
   }
 }
 
