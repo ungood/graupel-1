@@ -2,272 +2,121 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="author" content="John Doe">
-  <meta name="dcterms.date" content="2017-06-21">
-  <title>Demo Slide</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js//dist/reset.css">
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js//dist/reveal.css">
+  <title>Graupel-1 HAB Launch</title>
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">-->
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css">
+  <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/sky.css" id="theme">
   <style>
-    code{white-space: pre-wrap;}
-    span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
-    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-    ul.task-list{list-style: none;}
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      {   }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-    code span.at { color: #7d9029; } /* Attribute */
-    code span.bn { color: #40a070; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #4070a0; } /* Char */
-    code span.cn { color: #880000; } /* Constant */
-    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-    code span.dt { color: #902000; } /* DataType */
-    code span.dv { color: #40a070; } /* DecVal */
-    code span.er { color: #ff0000; font-weight: bold; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #40a070; } /* Float */
-    code span.fu { color: #06287e; } /* Function */
-    code span.im { } /* Import */
-    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-    code span.op { color: #666666; } /* Operator */
-    code span.ot { color: #007020; } /* Other */
-    code span.pp { color: #bc7a00; } /* Preprocessor */
-    code span.sc { color: #4070a0; } /* SpecialChar */
-    code span.ss { color: #bb6688; } /* SpecialString */
-    code span.st { color: #4070a0; } /* String */
-    code span.va { color: #19177c; } /* Variable */
-    code span.vs { color: #4070a0; } /* VerbatimString */
-    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  .columns {
+    display: grid;
+    grid-auto-flow: column;
+    text-align: left;
+    grid-template-columns: 1fr 1fr;
+  }
+  .rows {
+    display: grid;
+    grid-auto-flow: row;
+  }
   </style>
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js//dist/theme/black.css" id="theme">
 </head>
 <body>
-  <div class="reveal">
-    <div class="slides">
+<div class="reveal">
+<div class="slides">
 
-<section id="title-slide">
-  <h1 class="title">Demo Slide</h1>
-  <p class="author">John Doe</p>
-  <p class="date">June 21, 2017</p>
+<section>
+  <figure>
+    <img width="50%" data-src="images/mission-patch.png" alt="Mission Patch" />
+  </figure>
+  <p>June 19th, 2021</p>
 </section>
 
-<section id="foo" class="slide level1">
-<h1>Foo</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">&quot;hello world&quot;</span>)</span></code></pre></div>
-</section>
-<section id="bar" class="slide level1">
-<h1>Bar</h1>
-<ul>
-<li>test</li>
-<li>test</li>
-</ul>
-</section>
-    </div>
+<section data-background="images/stratosphere.jpg" style="color:#f4f5e2">
+  <h2 style="color:#f4f5e2">Mission Objectives</h2>
+  <div style="padding-top: 200px">
+    <p class="fragment">Reach 100,000’</p>
+    <p class="fragment">Record the flight in HD</p>
+    <p class="fragment" style="font-weight:bold">Recover the camera</p>
   </div>
+</section>
 
-  <script src="https://unpkg.com/reveal.js//dist/reveal.js"></script>
+<section>
+  <section>
+    <h2>Vehicle Overview</h2>
+    <div class="columns r-stretch">
+      <img data-src="https://lh3.googleusercontent.com/9CELBjhxshTpms_j-7AzS4q_CrIERpWUbydfoHQbOFHfLXAKkkJzanHT3Gu90jrUZuQkaiMsLlyBs0awiJXPXe3t-_46Bem1Mfh_qy6s-F0rpav2R_75GcHMy3PliqAmd-CHNwZfHAs=w2400" alt="Vehicle Overview" />
+      <div class="rows">
+        <p class="fragment">Balloon</p>
+        <p class="fragment">Parachute</p>
+        <p class="fragment">Payload</p>
+      </div>
+    </div>
+  </section>
+  <section>
+    <h3>1000g Rubber Balloon</h3>
+    <img class="r-stretch" data-src="https://lh3.googleusercontent.com/7IQUzbRl_bNHk9A8ywVzGJVBpGM4IRbA1PMzDeVGta0EhhhvyQkaclnmBy2dCTUfWmPUNRzg3VTEp_ACcQyPnWfGk87p2sHaPeoJMxnnXZ1pP1zIjZp-QbmDpWEghHQZzb7WXBWerR0=w2400" alt="Balloon" />
+  </section>
+  <section>
+    <h3>3' Nylon Parachute</h3>
+    <video controls class="r-stretch">
+      <source data-src="https://lh3.googleusercontent.com/YaM7QNDb9O-XwI1CLZkBeUskEsOuuDMTUd5XkYsUzfajU3ng0_rfs7n93CeK04fD6VKick4uFCBvrHh508CPQoMXbdiEIdO3wwJm5PfBEPdd6Ho_bgPHxXCyeCoeH5DuoRRub23KqQQ=m37#t=9" type="video/mp4">
+    </video>
+  </section>
+  <section>
+    <h3>Payload</h3>
+   <img class="r-stretch" data-src="https://lh3.googleusercontent.com/LAWWpsD7IzML-JRvWH2qM_a38brJ-WgT2Zh3TsW5GrDkDFUxJ0z_DsrS3jzl3Eb5sR07alr6Y_UEfX-O7oP5KGdmBsB6wMykOH6ELo6__v80jFKUKSfLMb8lCpbm_I3tNvEhKgKqrb0=w1920-h1080" alt="Payload" />
+  </section>
+  <section>
+    <div class="columns r-stretch" style="grid-template-columns: 2fr 1fr;">
+      <img data-src="https://raw.githubusercontent.com/OverlookHorizon/OLHZN_Track/master/Documentation/Finished%20Photos/27746961_10101106126605376_897924713_o.jpg" />
+      <div class="rows r-stretch">
+        <img data-src="images/go-pro.png"/>
+        <img data-src="images/spot-trace.png"/>
+      </div>
+    </div>
+  </section>
+  
+</section>
 
-  <!-- reveal.js plugins -->
-  <script src="https://unpkg.com/reveal.js//plugin/notes/notes.js"></script>
-  <script src="https://unpkg.com/reveal.js//plugin/search/search.js"></script>
-  <script src="https://unpkg.com/reveal.js//plugin/zoom/zoom.js"></script>
+<section>
+  <h2>Mission Planning</h2>
+</section>
 
-  <script>
+<section>
+  <h2>Launch Day</h2>
+</section>
 
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-        // Display controls in the bottom right corner
-        controls: true,
+<section>
+  <h2>Science!</h2>
+</section>
 
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: true,
+<section>
+  <h2>Learnings</h2>
+</section>
 
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'bottom-right',
+<section>
+  <h2>Resources</h2>
+  <p><a href="https://github.com/ungood/graupel-1">Graupel-1 Source Code</a></p>
+  <p><a href="https://www.highaltitudescience.com/">High Altitude Science</a></p>
+  <p><a href="https://www.overlookhorizon.com/">Overlook Horizon</a></p>
+</section>
 
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
 
-        // Display a presentation progress bar
-        progress: true,
+</div>
+</div>
 
-        // Display the page number of the current slide
-        slideNumber: false,
+<script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+<script src="https://unpkg.com/reveal.js/plugin/notes/notes.js"></script>
+<script src="https://unpkg.com/reveal.js/plugin/search/search.js"></script>
+<script src="https://unpkg.com/reveal.js/plugin/zoom/zoom.js"></script>
 
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
+<script>
 
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: false,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
-        // Push each slide change to the browser history
-        history: false,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: true,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'default',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: true,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'fade',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // reveal.js plugins
-        plugins: [
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
-      });
-    </script>
-    </body>
+// Full list of configuration options available at:
+// https://revealjs.com/config/
+Reveal.initialize({
+  center: false,
+  hash: true
+});
+</script>
+</body>
 </html>
