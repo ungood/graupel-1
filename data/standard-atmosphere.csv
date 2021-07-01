@@ -1,0 +1,9 @@
+﻿layer,name,geopotential_altitude_m,geometric_altitude_m,lapse_rate_K_m,base_temperature_C,base_temperature_K,base_pressure_Pa,base_density_kg_m3
+0,Troposphere,-610,-611,-0.0065,19.00,292.15,108900.00,1.2985
+1,Tropopause,11000,11019,0.0000,-56.50,216.65,22632.00,0.3639
+2,Stratosphere,20000,20063,0.0010,-56.50,216.65,5474.90,0.0880
+3,Stratosphere,32000,32162,0.0028,-44.50,228.65,868.02,0.0132
+4,Stratopause,47000,47350,0.0000,-2.50,270.65,110.91,0.0020
+5,Mesosphere,51000,51413,-0.0028,-2.50,270.65,66.94,
+6,Mesosphere,71000,71802,-0.0020,-58.50,214.65,3.96,
+7,Mesopause,84852,86000,,-86.28,186.87,0.37,
