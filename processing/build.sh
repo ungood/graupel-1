@@ -1,0 +1,1 @@
+pipenv run jupyter nbconvert DataAnalysis.ipynb --no-input --to html --output ../docs/science.html
