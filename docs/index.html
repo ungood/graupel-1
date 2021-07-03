@@ -8,16 +8,35 @@
   <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/sky.css" id="theme">
   <link rel="icon" type="image/ico" href="images/favicon.ico">
   <style>
-  .columns {
-    display: grid;
-    grid-auto-flow: column;
-    text-align: left;
-    grid-template-columns: 1fr 1fr;
-  }
-  .rows {
-    display: grid;
-    grid-auto-flow: row;
-  }
+    .light-text * {
+      color:#f4f5e2 !important;
+    }
+    .columns {
+      display: grid;
+      grid-auto-flow: column;
+      text-align: left;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 25px;
+    }
+    .rows {
+      display: grid;
+      grid-auto-flow: row;
+    }
+    .center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .text-box {
+      background-color: var(--r-background-color);
+    }
+    .text-box h4 {
+      text-align: center;
+    }
+    .text-box * {
+      font-size: 24px;
+      color:  var(--r-main-color) !important;
+    }
   </style>
 </head>
 <body>
@@ -29,10 +48,14 @@
     <img width="50%" data-src="images/mission-patch.png" alt="Mission Patch" />
   </figure>
   <p>June 19th, 2021</p>
+  
+  <aside class="notes">
+    Speaker Notes WIP
+  </aside>
 </section>
 
-<section data-background="images/stratosphere.jpg" style="color:#f4f5e2">
-  <h2 style="color:#f4f5e2">Mission Objectives</h2>
+<section data-background="images/stratosphere.jpg" class="light-text">
+  <h2>Mission Objectives</h2>
   <div style="padding-top: 200px">
     <p class="fragment">Reach 100,000’</p>
     <p class="fragment">Record the flight in HD</p>
@@ -52,22 +75,20 @@
       </div>
     </div>
   </section>
+  
   <section>
     <h3>1000g Rubber Balloon</h3>
     <img class="r-stretch" data-src="https://lh3.googleusercontent.com/7IQUzbRl_bNHk9A8ywVzGJVBpGM4IRbA1PMzDeVGta0EhhhvyQkaclnmBy2dCTUfWmPUNRzg3VTEp_ACcQyPnWfGk87p2sHaPeoJMxnnXZ1pP1zIjZp-QbmDpWEghHQZzb7WXBWerR0=w2400" alt="Balloon" />
   </section>
+  
   <section>
     <h3>3' Nylon Parachute</h3>
-    <iframe class="r-stretch" src="https://www.youtube.com/embed/KNuOrgYp1i8?start=9&rel=0" frameborder="0"></iframe>
-    <!--
-    <video controls class="r-stretch">
-      <source data-src="https://lh3.googleusercontent.com/YaM7QNDb9O-XwI1CLZkBeUskEsOuuDMTUd5XkYsUzfajU3ng0_rfs7n93CeK04fD6VKick4uFCBvrHh508CPQoMXbdiEIdO3wwJm5PfBEPdd6Ho_bgPHxXCyeCoeH5DuoRRub23KqQQ=m37#t=9" type="video/mp4">
-    </video>
-      -->
+    <iframe class="r-stretch" data-src="https://www.youtube.com/embed/KNuOrgYp1i8?start=9&rel=0" frameborder="0"></iframe>
   </section>
+  
   <section>
     <h3>Payload</h3>
-   <img class="r-stretch" data-src="https://lh3.googleusercontent.com/LAWWpsD7IzML-JRvWH2qM_a38brJ-WgT2Zh3TsW5GrDkDFUxJ0z_DsrS3jzl3Eb5sR07alr6Y_UEfX-O7oP5KGdmBsB6wMykOH6ELo6__v80jFKUKSfLMb8lCpbm_I3tNvEhKgKqrb0=w1920-h1080" alt="Payload" />
+   <img class="r-stretch" data-src="https://lh3.googleusercontent.com/aLRlhpRzvNF0RDtBzZgVDvvcR2DWCxmd0HCcGnC5gWFrz3lMCFsYfG3nW1hQYsXUYYpbzbZdK35PuLuhw3k49oPSBL7S1cCPiWaF6xiXiGcgXoDIAr9yc8ShTtYeMFRCCwbLOUZ2C-Y=w2400" alt="Payload" />
   </section>
   <section>
     <div class="columns r-stretch" style="grid-template-columns: 2fr 1fr;">
@@ -79,14 +100,140 @@
     </div>
   </section>
   
+  <section>
+    <h3>Ground Control</h3>
+    <img class="r-stretch" data-src="https://lh3.googleusercontent.com/VECorF4TjpGpQfybMTsFQZkEHz8SsJuJEXefabk23G7J7Eyj9CjvHfGdvMHJfY9uWIyxfvqlaDPuJHSAfN8hCAi5FklYabjOgb8yddRsOQfSwXommtso3JhINRWdSLLRekezCkppaCw=w2400" alt="Ground Control"/>
+  </section>
 </section>
 
-<section>
-  <h2>Mission Planning</h2>
+<section data-background="images/prediction-earth.png" class="light-text">
+  <section class="center">
+    <h2>Mission Planning</h2>
+  </section>
+  
+  <section>
+    <h3>Ascent</h3>
+    <iframe class="r-stretch" data-src="http://tools.highaltitudescience.com/#"></iframe>
+    
+    <aside class="notes">
+      <ul>
+        <li>1325g Payload Weight</li>
+        <li>1000g Balloon</li>
+        <li>~1100g Positive Lift</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section>
+    <h3>Descent</h3>
+    <iframe class="r-stretch" data-src="https://fruitychutes.com/help_for_parachutes/parachute-descent-rate-calculator.htm"></iframe>
+    
+    <aside class="notes">
+      <ul>
+        <li>RocketMan 3' HAB Parachute</li>
+        <li>36" Diameter"</li>
+        <li>0.97 drag coefficient</li>
+      </ul>
+    </aside>  
+  </section>
+  
+  <section>
+    <h3>Landing Prediction</h3>
+    <iframe class="r-stretch" data-src="https://predict.habhub.org/#!/uuid=03c1eb3549ff81fa1d3e306df313e53cf131d0b7"></iframe>
+    
+    <aside class="notes">
+      <ul>
+        <li>Ascent Rate: 4.9 m/s</li>
+        <li>Descent Rate: 6 m/s</li>
+        <li>Burst Altitude: 31000 m</li>
+      </ul>
+    </aside>
+  </section>
+  
+  <section>
+    <h3>Preparation</h3>
+    <div class="columns">
+      <div class="text-box">
+        <h4>T+7 Days</h4>
+        <ol>
+          <li>Confirm helium tank rental</li>
+          <li>Preliminary flight predictions</li>
+          <li>Preliminary weather predictions</li>
+          <li>Confirm FAA airspace</li>
+          <li>Test all hardware</li>
+        </ol>
+      </div>
+      <div class="text-box">
+        <h4>T+24 Hours</h4>
+        <ol>
+          <li>Pickup helium tank</li>
+          <li>Final flight predictions</li>
+          <li>Final weather report</li>
+          <li><b>File NOTAM</b></li>
+          <li>Charge devices and batteries</li>
+        </ol>
+      </div>
+    </div>
+  </section>
 </section>
 
-<section>
-  <h2>Launch Day</h2>
+<section data-background-color="black" class="light-text">
+  <section>
+    <h2>Launch Day</h2>
+    <div class="pa-gallery-player-widget" style="width:100%; height:480px; display:none;"
+      data-link="https://photos.app.goo.gl/JtKe5jDEE9wEhbGd7"
+      data-title=""
+      data-description="14 new photos added to shared album"
+      data-delay="120"
+      data-repeat="false">
+      <object data="https://lh3.googleusercontent.com/uZnXqEor8rGESNdpwbpH3-tknYeOpYAi6Pu1ItRLKB0Rt2OshKSPmVBx53dQKhW2PMp34HEGD4jmuz9nqCX5-9MlmWOqAO2Of5LY9rmNTehv-NB9nxEvJm2mx4kkw4PBvamj_w9PSCY=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/r19WfMZXdDAgi_kKLzOlwQPb2Be5JyapBngu-s_MUhl0rWsTRGsZzBS5busEaGmquXWh1PlMuUHm5METf7tnKLkbjh3dYmjBBmn8gs0xdJYi9vMBLrv10BBfwT_9dS87u8bcuet-mnM=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/u10VT2e2Je8FXyF-DfUBl_aZ3jbSRcbXfeSnXDW-kCX97Sd8Shv8JYfwcEl1Gph2ttua0xU7-z98r2YFaya_mmtHwIOyr0Wmk5Cp8djNhdRlMV2d9itCHGtpnyUbkD7IaEsONRRk_fQ=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/BJmDkSb4S1pxTG_FMlvwZuS7_MfaP-qOOLoP7oEk6nrZkVDG5dzuGi47Ze8junwcMH8ETH7kXZpzRDgiDu2ZdyOItoDNmdimsYeIC7AeShg0HQ04UIzFBHnXi4t_PWRFCNmDd-DMppI=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/hJ9cIO-XROT5DvceDUSClhFlyPRlbUoF40X_WfYA5b0kCwkXveIALH4iAyMjWf9Rgq-h4SbNdNes-82fI3g38sfuv0Zhi0FnnI5Y84PAdwmE601qTnhzpncPhAw246-hfOjSE1uYMTc=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/mwEVs8V33twvt9GMS-q6r_qgLJV9IvMR57TGXqnSLbEM565z_JDegNi1n_r6HEQWmgwoHfZIctmj5Sm6sYi5zXZRAe_F6PShiDkYInLYrw95De0tj_IFJ5lF45NHv03qNhRxOL2dRk4=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/EAl3Lo05jIG6tueh9no3actVZMRwVNw0KmSqv1vFtF4BdrgacsqqkYhpGc4XDvBZq41_spBGM2AtRY_fCM2ImS1bdfE6F5ayY5EszT9VAkE4uCyG70k_F97kdZxEjjQi-lOgg498R14=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/FmarZwNBFd6IJCrZuHWSKefptuNvyfgKUwjLDnyjCQCm2zpH2Z289GF0Bx-lN1xmGUj9Do0RE8RQAh3_aTJIGw22ssVYYqpJUBgLKEix27phy-WxTp5KHwGVZK7SY4SCR-7L1_qzAuo=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/5M_0rVGVEVOF3wnyteiKDqScsTKtyDjcJdwcIKc7_GygG6duds9WPOJUp92_A2lNWYWSxNaiHuc_eYN5CpMa01dqrEnVt7Mb0oEr_dF0Wy2KhcKCQDxGMn14iO4CT3qdyv5_GKxFoTA=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/cH2tlcAivHz1hLvgGQ2gK-6BdBOn4qw_59EEfAUsUL0Lmq2o7Y5bC5d5XKyclsEYJJDjsRcFGf-p2mYxs7-yvb4kllCXgN26PUuyNR-x0SK4eakNf41CLBg_HwyO5acA5BqkcDEN0_w=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/85h1uoJ1_W4sFrZdcM4Wq6O3R_Te2416awsWvVgIeMFCoOhDyst_MGSIfL1TBMdXPnqFQNQR8YeS8yQ03yUkYUXsgVeIzb6o8fFX3Eb0QQZ1XL25dp_-INjNF1P1iaUruHLUmpf4oto=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/CdxiRHdCvV14jGsoKnAwVDfsfva2hb4rBdB-8o7EcdnTv7QCRPWr3S59yykVfmeUyV2ErSI7CFNGo_Z2RUT0z-V8xb2EFTYnkr3nDxpU09J2qfgtoipucichemRSVBwVIozh7a-X59o=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/S-zvkwnQN4O9CTNj_469pqUGqfKOiepyOmc6x7KvxvgO4OpnyFcCcRlxSU8M8wV9z_4fGP24xs9oy4lXXZ7bThM7wRCrOsTjtkfbQ0dMvs-2F8x54nydZmNVM3QYWXlX2uVlrNdkHU8=w1920-h1080"></object>
+    </div>
+  </section>
+  
+  <section>
+    <iframe class="r-stretch" data-src="https://www.youtube.com/embed/I-U7xgt9lpg?rel=0" frameborder="0"></iframe>
+  </section>
+  
+  <section>
+    <iframe class="r-stretch" data-src="https://www.youtube.com/embed/lImLxy-Fu9U?start=36&rel=0" frameborder="0"></iframe>
+  </section>
+  
+  <section data-background="./images/flight-path.png">
+  </section>
+  
+  <section>
+    <div class="pa-gallery-player-widget r-stretch" style="width:100%; height:480px; display:none;"
+      data-link="https://photos.app.goo.gl/caVfjuwkabcWMJho9"
+      data-title=""
+      data-description="2021 - Graupel-1 Chase"
+      data-delay="120">
+      <object data="https://lh3.googleusercontent.com/Le5oQQSEYGvb2bHXNf4tERlf_dbU0VCp30eJNwqplK7qVAkLv3cjOOu_e9eljWoCI0ezLQPd7GOyj-vTE1f3WcBis-SAH59XOdi6e1u7LSQRyADyCLf0afqvatVh8SmFExmqt2itFk4=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/B5CBJQslwyiEscQj6caHpbqMk9TUiBL9OWkJsMZpS4kqXZBo3ToOTd-V5y5EdOtJoPnYuwJx4Rp69fA1s5qlbA7qJGG-Ja8NxXfKFtgaWaCYtEI32s-ymsHr3SxXUXcjTfBG3H5_LOE=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/wGI49nDBq_fdmdpDA2D01BrkiHH2CWs2kRRwdHY4NJX9pBbSQb5Fac4Y9reWnVg-VTpegnfFvdav_VOm-VkEJhUTAGpBQ_AIMYQiRrVHfNqKYJ0H5y_NESLI_E2wypsNqTTYYIogqHg=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/mk4MFvqJsQB_wj2eoM9T6xEqYRPlUfZi62_3Bb0iG1yy23xPByL9-R3kOkrnQ7a5UVESWeCiUJrAPll5T9y-ErtmY4sWDU6CKhFN8q06OVcfGUYZp-nCxD65nkHAdZWapg_ljXST9e0=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/uKDe3zombczIGE1H2Ig8peFBQJnqt8j8nxAHVJ5QhhCNcxutaNAvo77dVWba8ngAmRIxmil5xUTPPD8cduQeL-BXOe5tDVjhWBhEDVpH3XM_GtOTAPXCHpyOL3eaG1SCkujjw-sblus=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/h6z6DpK269QxczzUjuRC3ovAx31Z35z28E8FZZWYiJhcq9cXEU4q4c6_aUk-j_UNamjUURaEKq-fbOk-Dw9JOvEDr94OhWRyBsfnl1b7dfer78i0_syVcck62kUXXJpWg-EgE0CS-xM=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/4igpO5C0zYfwQ5lZEWGIrx-8JrAzLjZRoaFLeKqpVkezgamI2ShNqsjdwJlx1QJpreLoJJMBaKqaunXPET27kRyBkBRjn3wTjZ5LROPqSitiBwfe_4BaqjfbhS6IJ--ZrKtCs5XoQ7o=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/uqCeDNx-OlbBl_2RTpTQtE0St5-TdEuKm1VRNpi5raCeuN8I51cbJhe7pOuOjuP8Px6nrGE0inknC4BwDS392Z_UtBIi5oA1z9hMPzMWZviOFhIcXE0t2PcD8XooNfABIf2ENBZvwF8=w1920-h1080"></object>
+      <object data="https://lh3.googleusercontent.com/7vJsHxRIWQj4NWaZEOmAoIrfPhU3t0MDKbAwx2wN2nPinan04sgwh72O5Xe9iY2BIxYac1ND31HbkTAO2KPh_Qjt7Lj5SYao8dYnQdHxJ4S7LdcHlj4sJ3z7I9eM-ndcasEEpz_Z5Y8=w1920-h1080"></object>
+    </div>
+  </section>
+    
+  <section>
+    <iframe class="r-stretch" data-src="https://www.youtube.com/embed/G-EoY2tp374?rel=0" frameborder="0"></iframe>
+  </section>
 </section>
 
 <section>
@@ -102,6 +249,8 @@
   <p><a href="https://github.com/ungood/graupel-1">Graupel-1 Source Code</a></p>
   <p><a href="https://www.highaltitudescience.com/">High Altitude Science</a></p>
   <p><a href="https://www.overlookhorizon.com/">Overlook Horizon</a></p>
+  <p><a href="https://predict.habhub.org/">CUSF Landing Predictor</a></p>
+  <p><a href="https://aprs.fi/">APRS Online Tracking</a></p>
 </section>
 
 
@@ -112,6 +261,7 @@
 <script src="https://unpkg.com/reveal.js/plugin/notes/notes.js"></script>
 <script src="https://unpkg.com/reveal.js/plugin/search/search.js"></script>
 <script src="https://unpkg.com/reveal.js/plugin/zoom/zoom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/publicalbum@latest/embed-ui.min.js" async></script>
 
 <script>
 
@@ -119,7 +269,10 @@
 // https://revealjs.com/config/
 Reveal.initialize({
   center: false,
-  hash: true
+  hash: true,
+  plugins: [
+    RevealNotes
+  ]
 });
 </script>
 </body>
