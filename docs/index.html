@@ -27,6 +27,7 @@
     }
     .text-box {
       background-color: var(--r-background-color);
+      border: 1px solid #111;
     }
     .text-box h4 {
       text-align: center;
@@ -35,11 +36,27 @@
       font-size: 24px;
       color:  var(--r-main-color) !important;
     }
+    img {
+      border: 1px solid #111;
+    }
+    img.transparent {
+      border: none;
+    }
+    iframe {
+      border: 1px solid #111;
+    }
   </style>
 </head>
 <body>
 <div class="reveal">
 <div class="slides">
+    
+<!--
+    * Possibly focus on the interesting sites (launch, landing)
+    * See what mountains are in the background - Ranier!
+    * Burst calculator spreadsheet
+    * Rearrange chase photos
+-->
 
 <section data-background="images/title-screen.png" class="light-text">
   <h2>Graupel-1</h2>
@@ -47,9 +64,14 @@
   <h3>June 19th, 2021</h3>
   <p></p>
   
-  <aside class="notes">
-    Speaker Notes WIP
-  </aside>
+    <aside class="notes">
+      <h3>Introductions</h3>
+      <ul>
+        <li>Chris Stearns: Mission Director</li>
+        <li>Jason Walker: Ground Control</li>
+        <li>Ellie + Jayden: Flight technicians</li>
+      </ul>
+    </aside>
 </section>
 
 <section data-background="images/title-screen.png" class="light-text">
@@ -59,6 +81,10 @@
     <p class="fragment">Record the flight in HD</p>
     <p class="fragment" style="font-weight:bold">Recover the camera</p>
   </div>
+  
+  <aside class="notes">
+    Chris:
+  </aside>
 </section>
 
 <section>
@@ -77,11 +103,19 @@
   <section>
     <h3>1000g Rubber Balloon</h3>
     <img class="r-stretch" data-src="https://lh3.googleusercontent.com/7IQUzbRl_bNHk9A8ywVzGJVBpGM4IRbA1PMzDeVGta0EhhhvyQkaclnmBy2dCTUfWmPUNRzg3VTEp_ACcQyPnWfGk87p2sHaPeoJMxnnXZ1pP1zIjZp-QbmDpWEghHQZzb7WXBWerR0=w2400" alt="Balloon" />
+    
+    <aside class="notes">
+      Kaymont weather balloon
+    </aside>
   </section>
   
   <section>
     <h3>3' Nylon Parachute</h3>
     <iframe class="r-stretch" data-src="https://www.youtube.com/embed/KNuOrgYp1i8?start=9&rel=0" frameborder="0"></iframe>
+    
+    <aside class="notes">
+      3' Rocketman Parachute, Specially designed for HAB with a loop on top.
+    </aside>
   </section>
   
   <section>
@@ -92,10 +126,18 @@
     <div class="columns r-stretch" style="grid-template-columns: 2fr 1fr;">
       <img data-src="https://raw.githubusercontent.com/OverlookHorizon/OLHZN_Track/master/Documentation/Finished%20Photos/27746961_10101106126605376_897924713_o.jpg" />
       <div class="rows r-stretch">
-        <img data-src="images/go-pro.png"/>
-        <img data-src="images/spot-trace.png"/>
+        <img data-src="images/go-pro.png" class="transparent"/>
+        <img data-src="images/spot-trace.png" class="transparent"/>
       </div>
+      
+      <aside class="notes">
+        Chris: GoPro and Spot Trace, Jason: Redundant Trackers.
+      </aside>
     </div>
+    
+    <aside class="notes">
+      Triangle basswood frame, instead of the somewhat typical foam ice chest. Pros/cons.
+    </aside>
   </section>
   
   <section>
@@ -111,9 +153,10 @@
   
   <section>
     <h3>Ascent</h3>
-    <iframe class="r-stretch" data-src="http://tools.highaltitudescience.com/#"></iframe>
+    <iframe class="r-stretch" data-src="http://tools.highaltitudescience.com/"></iframe>
     
     <aside class="notes">
+      <h3>Chris</h3>
       <ul>
         <li>1325g Payload Weight</li>
         <li>1000g Balloon</li>
@@ -127,6 +170,7 @@
     <iframe class="r-stretch" data-src="https://fruitychutes.com/help_for_parachutes/parachute-descent-rate-calculator.htm"></iframe>
     
     <aside class="notes">
+      <h3>Jason</h3>
       <ul>
         <li>RocketMan 3' HAB Parachute</li>
         <li>36" Diameter"</li>
@@ -137,13 +181,18 @@
   
   <section>
     <h3>Landing Prediction</h3>
-    <iframe class="r-stretch" data-src="https://predict.habhub.org/#!/uuid=03c1eb3549ff81fa1d3e306df313e53cf131d0b7"></iframe>
+    <iframe class="r-stretch" data-src="https://predict.habhub.org/"></iframe>
     
     <aside class="notes">
+      <h3>Jason</h3>
       <ul>
+        <li>Lat: 47.594812</li>
+        <li>Lon: -120.665063</li>
+        <li>Alt: 355m</li>
         <li>Ascent Rate: 4.9 m/s</li>
         <li>Descent Rate: 6 m/s</li>
         <li>Burst Altitude: 31000 m</li>
+        <li>What variables went into planning</li>
       </ul>
     </aside>
   </section>
@@ -152,7 +201,7 @@
     <h3>Preparation</h3>
     <div class="columns">
       <div class="text-box">
-        <h4>T+7 Days</h4>
+        <h4>T-7 Days</h4>
         <ol>
           <li>Confirm helium tank rental</li>
           <li>Preliminary flight predictions</li>
@@ -162,7 +211,7 @@
         </ol>
       </div>
       <div class="text-box">
-        <h4>T+24 Hours</h4>
+        <h4>T-24 Hours</h4>
         <ol>
           <li>Pickup helium tank</li>
           <li>Final flight predictions</li>
@@ -172,12 +221,18 @@
         </ol>
       </div>
     </div>
+    
+    <aside class="notes">
+      <h3>Jason</h3>
+      <ul>
+      </ul>
+    </aside>
   </section>
 </section>
 
-<section>
+<section data-background="images/drive-there.png">
   <section>
-    <h2>Launch Day</h2>
+    <h3>Launch Day</h3>
     <div class="r-stack r-stretch">
       <img class="fragment fade-in-then-out" data-src="https://lh3.googleusercontent.com/uZnXqEor8rGESNdpwbpH3-tknYeOpYAi6Pu1ItRLKB0Rt2OshKSPmVBx53dQKhW2PMp34HEGD4jmuz9nqCX5-9MlmWOqAO2Of5LY9rmNTehv-NB9nxEvJm2mx4kkw4PBvamj_w9PSCY=w1920-h1080" />
       <img class="fragment fade-in-then-out" data-src="https://lh3.googleusercontent.com/r19WfMZXdDAgi_kKLzOlwQPb2Be5JyapBngu-s_MUhl0rWsTRGsZzBS5busEaGmquXWh1PlMuUHm5METf7tnKLkbjh3dYmjBBmn8gs0xdJYi9vMBLrv10BBfwT_9dS87u8bcuet-mnM=w1920-h1080" />
@@ -198,17 +253,23 @@
   <section>
     <iframe class="r-stretch" data-src="https://www.youtube.com/embed/I-U7xgt9lpg?rel=0" frameborder="0"></iframe>
   </section>
-  
+    
   <section>
     <iframe class="r-stretch" data-src="https://www.youtube.com/embed/lImLxy-Fu9U?start=36&rel=0" frameborder="0"></iframe>
   </section>
   
-  <section>
+  <section data-background="images/drive-tacos.png">
     <h3>The chase</h3>
     <div class="r-stack r-stretch">
       <img class="fragment fade-in-then-out" data-src="https://lh3.googleusercontent.com/Le5oQQSEYGvb2bHXNf4tERlf_dbU0VCp30eJNwqplK7qVAkLv3cjOOu_e9eljWoCI0ezLQPd7GOyj-vTE1f3WcBis-SAH59XOdi6e1u7LSQRyADyCLf0afqvatVh8SmFExmqt2itFk4=w1920-h1080" />
       <img class="fragment fade-in-then-out" data-src="https://lh3.googleusercontent.com/B5CBJQslwyiEscQj6caHpbqMk9TUiBL9OWkJsMZpS4kqXZBo3ToOTd-V5y5EdOtJoPnYuwJx4Rp69fA1s5qlbA7qJGG-Ja8NxXfKFtgaWaCYtEI32s-ymsHr3SxXUXcjTfBG3H5_LOE=w1920-h1080" />
       <img class="fragment fade-in-then-out" data-src="https://lh3.googleusercontent.com/wGI49nDBq_fdmdpDA2D01BrkiHH2CWs2kRRwdHY4NJX9pBbSQb5Fac4Y9reWnVg-VTpegnfFvdav_VOm-VkEJhUTAGpBQ_AIMYQiRrVHfNqKYJ0H5y_NESLI_E2wypsNqTTYYIogqHg=w1920-h1080" />
+    </div>
+  </section>
+  
+  <section data-background="images/drive-landing.png">
+    <h3>The hike</h3>
+    <div class="r-stack r-stretch">
       <img class="fragment fade-in-then-out" data-src="https://lh3.googleusercontent.com/mk4MFvqJsQB_wj2eoM9T6xEqYRPlUfZi62_3Bb0iG1yy23xPByL9-R3kOkrnQ7a5UVESWeCiUJrAPll5T9y-ErtmY4sWDU6CKhFN8q06OVcfGUYZp-nCxD65nkHAdZWapg_ljXST9e0=w1920-h1080" />
       <img class="fragment fade-in-then-out" data-src="https://lh3.googleusercontent.com/uKDe3zombczIGE1H2Ig8peFBQJnqt8j8nxAHVJ5QhhCNcxutaNAvo77dVWba8ngAmRIxmil5xUTPPD8cduQeL-BXOe5tDVjhWBhEDVpH3XM_GtOTAPXCHpyOL3eaG1SCkujjw-sblus=w1920-h1080" />
       <img class="fragment fade-in-then-out" data-src="https://lh3.googleusercontent.com/h6z6DpK269QxczzUjuRC3ovAx31Z35z28E8FZZWYiJhcq9cXEU4q4c6_aUk-j_UNamjUURaEKq-fbOk-Dw9JOvEDr94OhWRyBsfnl1b7dfer78i0_syVcck62kUXXJpWg-EgE0CS-xM=w1920-h1080" />
@@ -217,18 +278,45 @@
       <img class="fragment fade-in-then-out" data-src="https://lh3.googleusercontent.com/7vJsHxRIWQj4NWaZEOmAoIrfPhU3t0MDKbAwx2wN2nPinan04sgwh72O5Xe9iY2BIxYac1ND31HbkTAO2KPh_Qjt7Lj5SYao8dYnQdHxJ4S7LdcHlj4sJ3z7I9eM-ndcasEEpz_Z5Y8=w1920-h1080" />
     </div>
   </section>
+  
+  <section data-background="./images/landing-hike.png" class="light-text">
     
-  <section>
-    <iframe class="r-stretch" data-src="https://www.youtube.com/embed/G-EoY2tp374?rel=0" frameborder="0"></iframe>
+    <aside class="notes">
+      <ul>
+        <li>3.5 miles</li>
+      </ul>
+    </aside>
   </section>
   
   <section data-background="./images/flight-path.png" class="light-text">
   </section>
+  
+  <section data-background="./images/flight-path.png" class="light-text">
+    <iframe class="r-stretch" data-src="https://www.youtube.com/embed/G-EoY2tp374?rel=0" frameborder="0"></iframe>
+    
+    <aside class="notes">
+      <ul>
+        <li>The payoff...</li>
+        <li>...the camera went out</li>
+        <li>about 50,000'</li>
+        <li>Shots of the Gorge...</li>
+        <li>...Mt. Rainier</li>
+        <li>...St. Helens</li>
+        <li>Potholes State Park</li>
+      </ul>
+    </aside>
+  </section>
 </section>
 
 <section>
-  <h2>Science!</h2>
+  <h3>Science!</h3>
   <iframe class="r-stretch" data-src="./science.html"></iframe>
+  
+  <aside class="notes">
+    <h3>Jason</h3>
+    <ul>
+    </ul>
+  </aside>
 </section>
 
 <section>
@@ -241,7 +329,28 @@
   <p class="fragment">Batteries don't like the cold</p>
   <p class="fragment">Atmospheric science is cool</p>
   <p class="fragment">High altitude ballooning is fun!</p>
+  
+  <aside class="notes">
+    <h3>Jason</h3>
+    <ul>
+    </ul>
+  </aside>
 </section>
+
+<section>
+  <h2>Graupel-2</h2>
+  <p class="fragment">Redundant GPS antenna</p>
+  <p class="fragment">GoPro battery upgrade</p>
+  <p class="fragment">Radio beacon</p>
+  <p class="fragment">Adjusted balloon / helium</p>
+  
+  <aside class="notes">
+    <h3>Chris</h3>
+    <ul>
+    </ul>
+  </aside>
+</section>
+
 
 <section>
   <h2>Resources</h2>
